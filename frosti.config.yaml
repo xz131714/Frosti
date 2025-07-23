@@ -29,10 +29,10 @@ site:
       svg: "material-symbols:book-2-outline-rounded"
       target: _self
       subItems:
-        - id: all
-          text: All blogs
-          href: /blog
-          svg: "material-symbols:ink-pen-outline-rounded"
+        - id: Course
+          text: Course
+          href: /blog/category/Course
+          svg: "material-symbols:eco-rounde"
           target: _self
         - id: documentation
           text: Documentation
