@@ -30,20 +30,25 @@ site:
       target: _self
       subItems:
         - id: course
-          text: Course
+          text: 教程
           href: /blog/category/Course
           svg: "material-symbols:book-outline"
           target: _self
-        - id: documentation
-          text: Documentation
-          href: /blog/category/Documentation
-          svg: "material-symbols:unknown-document-outline-rounded"
-          target: _self
-        - id: examples
-          text: Examples
-          href: /blog/category/Examples
-          svg: "material-symbols:deployed-code-outline"
-          target: _self
+        - id: anime  
+          text: 动漫  
+          href: /blog/category/Anime  
+          svg: "material-symbols:movie-outline"  
+          target: _self  
+        # - id: documentation
+        #   text: Documentation
+        #   href: /blog/category/Documentation
+        #   svg: "material-symbols:unknown-document-outline-rounded"
+        #   target: _self
+        # - id: examples
+        #   text: Examples
+        #   href: /blog/category/Examples
+        #   svg: "material-symbols:deployed-code-outline"
+        #   target: _self
         # 子菜单项配置
     # - id: project
     #   text: Project
