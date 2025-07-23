@@ -14,16 +14,16 @@ site:
     pageSize: 8 # 每页显示的文章数量
   menu: # 菜单配置
     - id: home # 菜单项的唯一标识符
-      text: Home # 菜单项显示的文本
+      text: 首页 # 菜单项显示的文本
       href: / # 菜单项链接的地址
       svg: "material-symbols:home-outline-rounded"
       target: _self
     - id: about
-      text: About
+      text: 关于
       href: /about
       svg: "material-symbols:info-outline-rounded"
       target: _self
-    - id: blog
+    - id: 博客
       text: Blogs
       href: /blog
       svg: "material-symbols:book-2-outline-rounded"
@@ -68,8 +68,8 @@ site:
 
 # 用户的个人信息
 user:
-  name: 小张 # 用户名
-  site: "https://frosti.xiaozhangya.xin" # 用户的网站链接
+  name: Xiaozhang # 用户名
+  site: "https://hub.xiaozhangya.xin" # 用户的网站链接
   avatar: /profile.png # 用户头像路径
   sidebar: # 侧边栏配置
     social:
@@ -81,10 +81,10 @@ user:
         ariaLabel: Github
         title: Github
         svg: "ri:github-line"
-      # - href: "https://space.bilibili.com/438392347"
-      #   ariaLabel: BiliBili
-      #   title: BiliBili
-      #   svg: "ri:bilibili-line"
+      - href: "https://space.bilibili.com/1536411565"
+        ariaLabel: BiliBili
+        title: BiliBili
+        svg: "ri:bilibili-line"
       - href: "https://x.com/xzz_ya"
         ariaLabel: X(twitter)
         title: X(twitter)
@@ -100,10 +100,10 @@ user:
         ariaLabel: Github
         title: Github
         svg: "ri:github-line"
-      # - href: "https://space.bilibili.com/438392347"
-      #   ariaLabel: BiliBili
-      #   title: BiliBili
-      #   svg: "ri:bilibili-line"
+      - href: "https://space.bilibili.com/1536411565"
+        ariaLabel: BiliBili
+        title: BiliBili
+        svg: "ri:bilibili-line"
       - href: "https://x.com/xzz_ya"
         ariaLabel: X(twitter)
         title: X(twitter)
