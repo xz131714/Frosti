@@ -32,7 +32,7 @@ site:
         - id: Course
           text: Course
           href: /blog/category/Course
-          svg: "material-symbols:eco-rounde"
+          svg: "unknown-document-outline-rounded"
           target: _self
         - id: documentation
           text: Documentation
