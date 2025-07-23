@@ -1,4 +1,4 @@
----
+<!-- ---
 title: 🌟 CloudFlare ImgBed：美化界面✨与无限存储🚀的完美结合！
 description: 
 pubDate: 07 23 2025
@@ -9,6 +9,18 @@ tags:
   - Cloudflare
   - ImgBed
   - Telegram
+--- -->
+---
+title: "🌟 CloudFlare ImgBed：美化界面✨与无限存储🚀的完美结合！"
+description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
+pubDate: "Jul 23 2025"
+image: /image/image3.png
+categories:
+  - Documentation
+  - Examples
+tags:
+  - Makrdown
+badge: Pin
 ---
 
 <div align="center">
