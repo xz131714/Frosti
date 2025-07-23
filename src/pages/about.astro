@@ -7,9 +7,10 @@ import GitHubStats from "@/components/mdx/GitHubStats.astro";
 
 <BaseLayout title="About">
   <MainCard
-    title="About SunMaple"
-    description="Developer, open-source enthusiast, and creator of the Frosti blog theme."
+    title="About Xiaozhang"
+    description="Developer"
     textOverlay="ABOUT"
+    image="https://img.xiaozhangya.xin/file/1753261567796_bg1.jpg"
     infoIcon="lucide:user"
   >
     <div class="space-y-10 mb-8">
@@ -19,7 +20,7 @@ import GitHubStats from "@/components/mdx/GitHubStats.astro";
           <div
             class="w-32 h-32 md:w-40 md:h-40 rounded-xl ring ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden"
           >
-            <img src="https://github.com/xz131714.png" alt="XZ" width="160" height="160" loading="eager" />
+            <img src="https://img.xiaozhangya.xin/file/1753185126703_avatar.jpg" alt="XZ" width="160" height="160" loading="eager" />
           </div>
         </div>
 
@@ -53,10 +54,9 @@ import GitHubStats from "@/components/mdx/GitHubStats.astro";
           </div>
 
           <p class="text-base-content/80">
-            Hello! I'm SunMaple, a passionate developer focused on creating elegant, responsive, and efficient web
-            applications. I'm the creator of the Frosti blog theme, a modern Astro-based theme for content creators. I
-            love contributing to open-source projects and building tools that help others create beautiful digital
-            experiences.
+            <img align="right" src="https://count.getloli.com/get/@:xz131714?theme=rule34&num=9131714">
+            <h2>IT爱好者—小张</h2>
+            热爱折腾、热爱技术。小白一枚。
           </p>
         </div>
       </section>
@@ -102,57 +102,6 @@ import GitHubStats from "@/components/mdx/GitHubStats.astro";
               </div>
             ))
           }
-        </div>
-      </section>
-
-      <!-- Contribution Activity -->
-      <section>
-        <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-          <Icon name="lucide:activity" class="w-6 h-6 text-primary" />
-          <span>Recent Activity</span>
-        </h2>
-
-        <div class="bg-base-200 rounded-xl p-6 overflow-x-auto">
-          <div class="flex flex-col md:flex-row gap-8 md:gap-4 md:overflow-x-auto md:pb-2">
-            {
-              [
-                {
-                  date: "January 2024",
-                  title: "Open Source Contributions",
-                  desc: "Contributed to several open source projects, focusing on performance optimizations.",
-                },
-                {
-                  date: "March 2024",
-                  title: "Initiated Frosti Project",
-                  desc: "Started development of the Frosti blog theme for Astro, focusing on modern design principles.",
-                },
-                {
-                  date: "July 2024",
-                  title: "Released Frosti v2",
-                  desc: "Published version 2 with improved responsive design and extended plugin support.",
-                },
-                {
-                  date: "March 2025",
-                  title: "Released Frosti v3",
-                  desc: "Launched version 3 of the Frosti blog theme with enhanced performance and new customization options.",
-                },
-              ].map((item, i) => (
-                <div class="relative flex gap-4 pb-2 md:pb-0 md:min-w-[250px]">
-                  <div class="flex flex-col items-center">
-                    <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-content text-xl">
-                      {i + 1}
-                    </div>
-                    <div class="w-0.5 h-16 bg-base-300 mt-2 md:hidden" />
-                  </div>
-                  <div>
-                    <div class="text-sm text-base-content/60 mb-1">{item.date}</div>
-                    <h3 class="text-lg font-bold">{item.title}</h3>
-                    <p class="text-base-content/80 mt-1">{item.desc}</p>
-                  </div>
-                </div>
-              ))
-            }
-          </div>
         </div>
       </section>
     </div>
