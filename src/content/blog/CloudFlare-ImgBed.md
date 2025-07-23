@@ -1,13 +1,14 @@
 ---
 title: "🌟 CloudFlare ImgBed：美化界面✨与无限存储🚀的完美结合！"
-description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
+description: "Telegram 配合Cloudflare ImgBed：实现无限存储空间的图床！！！"
 pubDate: "Jul 23 2025"
-image: /image/image3.png
+image: https://img.xiaozhangya.xin/file/Customer/1753263760891_image.png
 categories:
-  - Documentation
-  - Examples
+  - Course
 tags:
-  - Makrdown
+  - Cloudflare
+  - ImgBed
+  - Telegram
 badge: Pin
 ---
 
