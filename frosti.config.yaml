@@ -23,8 +23,8 @@ site:
       href: /about
       svg: "material-symbols:info-outline-rounded"
       target: _self
-    - id: 博客
-      text: Blogs
+    - id: blog
+      text: 博客
       href: /blog
       svg: "material-symbols:book-2-outline-rounded"
       target: _self
