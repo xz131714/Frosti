@@ -2,11 +2,34 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
 import MainCard from "@/components/MainCard.astro";
+import MainCard from "@/components/BaseCard.astro";
 import FeatureCard from "@/components/mdx/FeatureCard.astro";
 import GitHubStats from "@/components/mdx/GitHubStats.astro";
 ---
 
 <BaseLayout title="Home">
+  <BaseCard title="Home">
+    <div class="flex">
+      <div class="p-6">
+        # Hi there!
+
+        This is the Frosti theme
+
+        A clean、 elegant、 and fast static blog template
+      </div>
+    </div>
+  </BaseCard>
+  <BaseCard title="Home" image="/home.webp">
+    <div class="flex">
+      <div class="p-6">
+        # Hi there!
+
+        This is the Frosti theme
+
+        A clean、 elegant、 and fast static blog template
+      </div>
+    </div>
+  </BaseCard>
   <MainCard
     title="Welcome to Xiaozhang's Blog"
     description="分享一些好玩的技术，小玩意，以及一些影视资源的分享."
@@ -20,18 +43,20 @@ import GitHubStats from "@/components/mdx/GitHubStats.astro";
           <h1
             class="text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent leading-loose"
           >
-            🌟 Frosti Blog Theme
+            🌟 Xiaozhang's Blog
           </h1>
           <p class="text-xl text-base-content/80 max-w-3xl mb-8">
-            A minimal, responsive, and feature-rich Astro blog theme designed for creators who value beautiful content
-            presentation and exceptional performance.
+            👋 你好！欢迎来到我的个人博客。作为一名刚踏入编程和技术世界的初学者，
+            我将在这里记录我一路走来的学习历程和探索心得。无论是遇到的挑战，还是
+            解决的难题，我都会一一分享，希望能为其他同样在技术路上起步的小伙伴提
+            供帮助和启发。让我们一起在这条旅程中成长，交流经验，互相鼓励！
           </p>
           <div class="flex flex-wrap gap-4 justify-center">
             <a href="/blog" class="btn btn-primary gap-2 btn-shine-effect">
               <Icon name="lucide:book-open" class="w-5 h-5" />
               <span>Explore Blog</span>
             </a>
-            <a href="https://github.com/EveSunMaple/Frosti" target="_blank" class="btn btn-outline gap-2">
+            <a href="https://github.com/xz131714/Frosti" target="_blank" class="btn btn-outline gap-2">
               <Icon name="lucide:github" class="w-5 h-5" />
               <span>Star on GitHub</span>
             </a>
@@ -39,6 +64,7 @@ import GitHubStats from "@/components/mdx/GitHubStats.astro";
         </div>
       </section>
 
+      <!-- 
       <!-- Features Section -->
       <section class="py-6">
         <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
@@ -167,6 +193,7 @@ import GitHubStats from "@/components/mdx/GitHubStats.astro";
           </div>
         </div>
       </section>
+      -->
 
       <!-- GitHub Stats -->
       <section class="py-6">
@@ -175,7 +202,7 @@ import GitHubStats from "@/components/mdx/GitHubStats.astro";
           <span>Repository Stats</span>
         </h2>
 
-        <GitHubStats username="EveSunMaple" repositoryName="Frosti" showLanguages={true} showContributors={true} />
+        <GitHubStats username="xz131714" repositoryName="Frosti" showLanguages={true} showContributors={true} />
       </section>
     </div>
   </MainCard>
