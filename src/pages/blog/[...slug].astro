@@ -7,6 +7,7 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import dayjs from "@utils/dayjs";
 import { DATE_FORMAT } from "@config";
 import MainCard from "@/components/MainCard.astro";
+import Waline from "../../components/comments/Waline.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -60,6 +61,6 @@ const url = new URL(`/${blog.slug}`, Astro.url.origin);
   </MainCard>
   <section class="comments">
     <h2>Comments</h2>
-    <Waline serverURL="https://your-waline-server.vercel.app" />
+    <Waline serverURL="https://comment.xiaozhangya.xin" />
   </section>
 </BaseLayout>
