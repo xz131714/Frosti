@@ -55,6 +55,7 @@ Add the following code to this component:
 
 ```astro
 ---
+// Props interface
 interface Props {
   serverURL: string;
   lang?: string;
