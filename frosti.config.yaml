@@ -39,11 +39,11 @@ site:
           href: /blog/category/Anime  
           svg: "material-symbols:movie-outline"  
           target: _self  
-        # - id: documentation
-        #   text: Documentation
-        #   href: /blog/category/Documentation
-        #   svg: "material-symbols:unknown-document-outline-rounded"
-        #   target: _self
+        - id: documentation
+          text: Documentation
+          href: /blog/category/Documentation
+          svg: "material-symbols:unknown-document-outline-rounded"
+          target: _self
         # - id: examples
         #   text: Examples
         #   href: /blog/category/Examples
