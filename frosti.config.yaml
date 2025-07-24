@@ -44,27 +44,27 @@ site:
           href: /blog/category/Documentation
           svg: "material-symbols:unknown-document-outline-rounded"
           target: _self
-    - id: about
-      text: 关于
-      href: /about
-      svg: "material-symbols:info-outline-rounded"
-      target: _self
         # - id: examples
         #   text: Examples
         #   href: /blog/category/Examples
         #   svg: "material-symbols:deployed-code-outline"
         #   target: _self
         # 子菜单项配置
-    # - id: project
-    #   text: Project
-    #   href: /project
-    #   svg: "material-symbols:code-blocks-outline"
-    #   target: _self
-    # - id: friend
-    #   text: Friend
-    #   href: /friend
-    #   svg: "material-symbols:supervisor-account-outline-rounded"
-    #   target: _self
+    - id: project
+      text: Project
+      href: /project
+      svg: "material-symbols:code-blocks-outline"
+      target: _self
+    - id: friend
+      text: Friend
+      href: /friend
+      svg: "material-symbols:supervisor-account-outline-rounded"
+      target: _self
+      - id: about
+      text: 关于
+      href: /about
+      svg: "material-symbols:info-outline-rounded"
+      target: _self
     # - id: contact
     #   text: Contact
     #   href: "mailto:contact.evesunmaple@outlook.com"

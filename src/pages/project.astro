@@ -2,46 +2,85 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { Icon } from "astro-icon/components";
 import MainCard from "@/components/MainCard.astro";
+import BaseCard from "@/components/BaseCard.astro";
+import FriendCard from "@/components/mdx/FriendCard.astro";
 import GitHubStats from "@/components/mdx/GitHubStats.astro";
 import RepositoryCard from "@/components/mdx/RepositoryCard.astro";
 ---
 
 <BaseLayout title="Projects">
+  <BaseCard title="Friends" image="https://img.xiaozhangya.xin/file/1753367593431_image.png">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-bold">
+          <span class="bg-gradient-to-r from-green-400 to-pink-500 text-transparent bg-clip-text">
+            Projects
+          </span>
+        </h1>
+        <h3 class="text-2xl md:text-3xl font-bold">
+        <p class="mt-2 text-base-content/60">
+          展示一些个人搭建的项目，搬运工！
+        </p>
+        </h3>
+      </div>
+    </BaseCard>
   <MainCard
-    title="Projects"
-    description="A showcase of my open-source projects and contributions on GitHub."
-    textOverlay="PROJECTS"
     infoIcon="lucide:code-2"
   >
-    <!-- Featured Projects -->
-    <section class="py-4">
-      <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-        <Icon name="lucide:star" class="w-6 h-6 text-primary" />
-        <span>Featured Projects</span>
-      </h2>
-
-      <GitHubStats username="EveSunMaple" repositoryName="Frosti" showLanguages={true} showContributors={true} />
-    </section>
-
-    <!-- My Repositories -->
+       <!-- My Repositories -->
     <section class="py-4">
       <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
         <Icon name="lucide:folder" class="w-6 h-6 text-primary" />
-        <span>My Repositories</span>
+        <span>My Projects</span>
       </h2>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <RepositoryCard repo="EveSunMaple/Frosti" isPinned={true} />
-        <RepositoryCard repo="EveSunMaple/SaroProck" isPinned={true} />
-        <RepositoryCard repo="EveSunMaple/astion-static" />
-        <RepositoryCard repo="EveSunMaple/astro-update-theme" />
-        <RepositoryCard repo="EveSunMaple/Word-testing-application" />
-        <RepositoryCard repo="EveSunMaple/Smooth-Snake-Game" />
+        <FriendCard
+              name="HomePage"
+              avatar="https://img.xiaozhangya.xin/file/Avatar/1753366550828_avatar1.jpg"
+              description="🏠 小张的个人主页！"
+              url="https://xiaozhangya.xin"
+              type="friend"
+        />
+        <FriendCard
+              name="Blog"
+              avatar="https://img.xiaozhangya.xin/file/Avatar/1753366547338_avatar2.jpg"
+              description="🚂 二次元风格的Blog,第一次加载可能比较慢~ (ﾉ>ω<)ﾉ"
+              url="https://blog.xiaozhangya.xin"
+              type="friend"
+        />
+        <FriendCard
+              name="ImgBed"
+              avatar="https://img.xiaozhangya.xin/file/Avatar/1753366548855_avatar3.jpg"
+              description="🌄 Cloudflare-ImgBed + Telegram实现的无限存储图床~"
+              url="https://img.xiaozhangya.xin"
+              type="friend"
+        />
+        <FriendCard
+              name="OpenList"
+              avatar="https://img.xiaozhangya.xin/file/Avatar/1753366556506_avatar4.jpg"
+              description="✨ 网盘挂载器~当然也可以添加本机的存储哇 (≧∇≦)ﾉ"
+              url="https://op.xiaozhangya.xin"
+              type="friend"
+        />
+        <FriendCard
+              name="Tipdm"
+              avatar="https://img.xiaozhangya.xin/file/Avatar/1753366554462_avatar5.jpg"
+              description="🏆 泰迪杯的一些项目代码🌷"
+              url="https://github.com/xz131714/Tipdm"
+              type="friend"
+        />
+        <FriendCard
+              name="PicBed"
+              avatar="https://img.xiaozhangya.xin/file/Avatar/1753366550329_avatar6.jpg"
+              description="🌄 PicGo+Github仓库的小图床awa"
+              url="https://github.com/xz131714/PicBed"
+              type="friend"
+        />
       </div>
 
       <div class="flex justify-center mt-10">
         <a
-          href="https://github.com/EveSunMaple?tab=repositories"
+          href="https://github.com/xz131714?tab=repositories"
           target="_blank"
           rel="noopener noreferrer"
           class="btn btn-outline gap-2"
@@ -52,56 +91,6 @@ import RepositoryCard from "@/components/mdx/RepositoryCard.astro";
       </div>
     </section>
 
-    <!-- Open Source Contributions -->
-    <section class="py-4">
-      <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-        <Icon name="lucide:git-pull-request" class="w-6 h-6 text-primary" />
-        <span>Open Source Contributions</span>
-      </h2>
-
-      <div class="card bg-base-200 p-6">
-        <ul class="space-y-6">
-          {
-            [
-              {
-                project: "Astro",
-                description: "Contributed to performance improvements and bug fixes",
-                url: "https://github.com/withastro/astro",
-              },
-              {
-                project: "TailwindCSS",
-                description: "Added new utility classes and documentation improvements",
-                url: "https://github.com/tailwindlabs/tailwindcss",
-              },
-              {
-                project: "DaisyUI",
-                description: "Contributed component enhancements and theme improvements",
-                url: "https://github.com/saadeghi/daisyui",
-              },
-            ].map((contrib) => (
-              <li class="flex items-start gap-4">
-                <div class="flex-shrink-0 bg-base-300 p-2 rounded-full">
-                  <Icon name="lucide:git-commit" class="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h3 class="text-lg font-bold">
-                    <a
-                      href={contrib.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="hover:text-primary transition-colors flex items-center gap-1"
-                    >
-                      {contrib.project}
-                      <Icon name="lucide:external-link" class="w-4 h-4" />
-                    </a>
-                  </h3>
-                  <p class="text-base-content/80">{contrib.description}</p>
-                </div>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </section>
+    
   </MainCard>
 </BaseLayout>
