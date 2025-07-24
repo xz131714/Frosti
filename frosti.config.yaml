@@ -60,7 +60,7 @@ site:
       href: /friend
       svg: "material-symbols:supervisor-account-outline-rounded"
       target: _self
-      - id: about
+    - id: about
       text: 关于
       href: /about
       svg: "material-symbols:info-outline-rounded"
