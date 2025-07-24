@@ -2,7 +2,7 @@
 title: "🌟 OpenList本地部署（Windows）！"
 description: "在本地电脑部署一个超级网盘集结器，当然也包含本机存储！"
 pubDate: "Jul 23 2025"
-image: https://picbed.xiaozhangya.xin/picbed/20250710225034957.jpg
+image: /image/Course/雪之下雪乃.jpg
 categories:
   - Course
 tags:

@@ -24,6 +24,11 @@ site:
       svg: "material-symbols:book-2-outline-rounded"
       target: _self
       subItems:
+        - id: all
+          text: All
+          href: /blog
+          svg: "material-symbols:ink-pen-outline-rounded"
+          target: _self
         - id: course
           text: 教程
           href: /blog/category/Course
@@ -89,6 +94,10 @@ user:
         ariaLabel: X(twitter)
         title: X(twitter)
         svg: "ri:twitter-line"
+      - href: "https://t.me/xzz_ya"
+        ariaLabel: Telegram
+        title: Telegram
+        svg: "ri:telegram-line"
 
   footer:
     social:
@@ -108,3 +117,7 @@ user:
         ariaLabel: X(twitter)
         title: X(twitter)
         svg: "ri:twitter-line"
+      - href: "https://t.me/xzz_ya"
+        ariaLabel: Telegram
+        title: Telegram
+        svg: "ri:telegram-line"

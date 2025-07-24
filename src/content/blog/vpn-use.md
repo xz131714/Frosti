@@ -18,12 +18,65 @@ badge: Pin
 ***FLClash Download***  
 **Download based on your OS:**
 
-  | **OS**      | **Download**                                                     |
-  | ------- | ------------------------------------------------------------ |
-  | **Android** | [![img](https://camo.githubusercontent.com/40225ceb1a905d3c12a01903192bf5c21ea4eb6a9ed3c42ac527ebfd62aa7982/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f41504b2d41524d76382d3136383033392e7376673f6c6f676f3d616e64726f6964)](https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-android-arm64-v8a.apk) [![img](https://camo.githubusercontent.com/77075a881e298fa51bd3d969914fa291f6c22ddfdf0e3425990d3b16d4376b5d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f41504b2d41524d76372d3435626635352e7376673f6c6f676f3d616e64726f6964)](https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-android-armeabi-v7a.apk) [![img](https://camo.githubusercontent.com/191779d40cbd2d763cfa11c6f86eb84867aeefbf9a581ff966e428047b66c2f0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f41504b2d7836342d3936656438392e7376673f6c6f676f3d616e64726f6964)](https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-android-x86_64.apk) |
-  | **Windows** | [![img](https://camo.githubusercontent.com/cf8134d6b42928ccba11797e170c3c186a67627d3b1c2a4b33fa8551bb92e70a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f53657475702d7836342d3264376439612e7376673f6c6f676f3d77696e646f7773)](https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-windows-amd64-setup.exe) [![img](https://camo.githubusercontent.com/7b9637338a7485e3534c68205bd47b8c5483467170de34a98f1180b39c84963d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f506f727461626c652d7836342d3637623764312e7376673f6c6f676f3d77696e646f7773)](https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-windows-amd64.zip) |
-  | **macOS**   | [![img](https://camo.githubusercontent.com/39f18a40cd7e51f05fc25c0d4938fc41b8a596ca21b62f3b0672834c49a370f8/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f444d472d4170706c6525323053696c69636f6e2d2532333030303030302e7376673f6c6f676f3d6170706c65)](https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-macos-arm64.dmg) [![img](https://camo.githubusercontent.com/f98569ccf2719290a247f3d44c6c530848972fb08ef3398589f7918230bd8422/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f444d472d496e74656c2532305836342d2532333030413945302e7376673f6c6f676f3d6170706c65)](https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-macos-amd64.dmg) |
-  | **Linux**   | [![img](https://camo.githubusercontent.com/5e0042f47cf06176e0ac4ed8f6d5f0c21e31adcdfc737b617a975c610d95eabc/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f417070496d6167652d7836342d6638346532392e7376673f6c6f676f3d6c696e7578)](https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-linux-amd64.AppImage) [![img](https://camo.githubusercontent.com/34e70144d435beffe476fba6953acdf1ffa8b560791561b17a8e7917681522a6/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4465625061636b6167652d7836342d4646393936362e7376673f6c6f676f3d64656269616e)](https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-linux-amd64.deb) [![img](https://camo.githubusercontent.com/c0d319e25b53f016bdaee002cbc3d6121e0cb810c6cbac23759e90bddd2f18b1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52706d5061636b6167652d7836342d4631423432462e7376673f6c6f676f3d726564686174)](https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-linux-amd64.deb) |
+### **Android**
+
+<div>
+  <a href="https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-android-arm64-v8a.apk" target="_blank" style="display:inline-block; margin-right:5px;">
+    <img src="https://camo.githubusercontent.com/40225ceb1a905d3c12a01903192bf5c21ea4eb6a9ed3c42ac527ebfd62aa7982/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f41504b2d41524d76382d3136383033392e7376673f6c6f676f3d616e64726f6964" alt="Android arm64" style="border-radius:12px;" />
+  </a>
+  <a href="https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-android-armeabi-v7a.apk" target="_blank" style="display:inline-block; margin-right:5px;">
+    <img src="https://camo.githubusercontent.com/77075a881e298fa51bd3d969914fa291f6c22ddfdf0e3425990d3b16d4376b5d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f41504b2d41524d76372d3435626635352e7376673f6c6f676f3d616e64726f6964" alt="Android armeabi-v7a" style="border-radius:12px;" />
+  </a>
+  <a href="https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-android-x86_64.apk" target="_blank" style="display:inline-block;">
+    <img src="https://camo.githubusercontent.com/191779d40cbd2d763cfa11c6f86eb84867aeefbf9a581ff966e428047b66c2f0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f41504b2d7836342d3936656438392e7376673f6c6f676f3d616e64726f6964" alt="Android x86_64" style="border-radius:12px;" />
+  </a>
+</div>
+
+
+---
+
+### **Windows**
+
+<div>
+  <a href="https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-windows-amd64-setup.exe" target="_blank" style="display:inline-block; margin-right:5px;">
+    <img src="https://camo.githubusercontent.com/cf8134d6b42928ccba11797e170c3c186a67627d3b1c2a4b33fa8551bb92e70a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f53657475702d7836342d3264376439612e7376673f6c6f676f3d77696e646f7773" alt="Windows Setup" style="border-radius:12px;" />
+  </a>
+  <a href="https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-windows-amd64.zip" target="_blank" style="display:inline-block;">
+    <img src="https://camo.githubusercontent.com/7b9637338a7485e3534c68205bd47b8c5483467170de34a98f1180b39c84963d/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f506f727461626c652d7836342d3637623764312e7376673f6c6f676f3d77696e646f7773" alt="Windows Zip" style="border-radius:12px;" />
+  </a>
+</div>
+
+
+---
+
+### **macOS**
+
+<div>
+  <a href="https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-macos-arm64.dmg" target="_blank" style="display:inline-block; margin-right:5px;">
+    <img src="https://camo.githubusercontent.com/39f18a40cd7e51f05fc25c0d4938fc41b8a596ca21b62f3b0672834c49a370f8/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f444d472d4170706c6525323053696c69636f6e2d2532333030303030302e7376673f6c6f676f3d6170706c65" alt="macOS arm64" style="border-radius:12px;" />
+  </a>
+  <a href="https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-macos-amd64.dmg" target="_blank" style="display:inline-block;">
+    <img src="https://camo.githubusercontent.com/f98569ccf2719290a247f3d44c6c530848972fb08ef3398589f7918230bd8422/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f444d472d496e74656c2532305836342d2532333030413945302e7376673f6c6f676f3d6170706c65" alt="macOS amd64" style="border-radius:12px;" />
+  </a>
+</div>
+
+
+---
+
+### **Linux**
+
+<div>
+  <a href="https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-linux-amd64.AppImage" target="_blank" style="display:inline-block; margin-right:5px;">
+    <img src="https://camo.githubusercontent.com/5e0042f47cf06176e0ac4ed8f6d5f0c21e31adcdfc737b617a975c610d95eabc/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f417070496d6167652d7836342d6638346532392e7376673f6c6f676f3d6c696e7578" alt="Linux AppImage" style="border-radius:12px;" />
+  </a>
+  <a href="https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-linux-amd64.deb" target="_blank" style="display:inline-block; margin-right:5px;">
+    <img src="https://camo.githubusercontent.com/34e70144d435beffe476fba6953acdf1ffa8b560791561b17a8e7917681522a6/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4465625061636b6167652d7836342d4646393936362e7376673f6c6f676f3d64656269616e" alt="Linux deb" style="border-radius:12px;" />
+  </a>
+  <a href="https://github.com/chen08209/FlClash/releases/download/v0.8.86/FlClash-0.8.86-linux-amd64.deb" target="_blank" style="display:inline-block;">
+    <img src="https://camo.githubusercontent.com/c0d319e25b53f016bdaee002cbc3d6121e0cb810c6cbac23759e90bddd2f18b1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52706d5061636b6167652d7836342d4631423432462e7376673f6c6f676f3d726564686174" alt="Linux deb" style="border-radius:12px;" />
+  </a>
+</div>
+
 
 
 ### ✅ 1. 复制订阅链接并打开 FLClash

@@ -2,7 +2,7 @@
 title: "🌟通过 Cloudflare 的 worker 、Pages 搭建永久免费的VPN，真正无限流量!🚀"
 description: "通过Cloudflare worker、page来收集可用的免费节点，速度甚至超过一些付费节点！！！"
 pubDate: "Jul 23 2025"
-image: https://cdn.jsdelivr.net/gh/xz131714/PicBed@main/202506301614059.png
+image: /image/Course/售货机.png
 categories:
   - Course
 tags:

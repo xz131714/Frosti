@@ -2,7 +2,7 @@
 title: "🌟 CloudFlare ImgBed：美化界面✨与无限存储🚀的完美结合！"
 description: "Telegram 配合Cloudflare ImgBed：实现无限存储空间的图床！！！"
 pubDate: "Jul 23 2025"
-image: https://img.xiaozhangya.xin/file/Customer/1753263760891_image.png
+image: /image/Course/CloudflareImgBed.png
 categories:
   - Course
 tags:
@@ -20,29 +20,6 @@ badge: Pin
         <a href="https://github.com/MarSeventh/CloudFlare-ImgBed/blob/main/README_en.md">English</a> | 
         <a href="https://cfbed.sanyue.de">官方网站</a>
     </p>
-    <div>
-        <a href="https://github.com/MarSeventh/CloudFlare-ImgBed/blob/main/LICENSE">
-            <img src="https://img.shields.io/github/license/MarSeventh/CloudFlare-ImgBed" alt="License" />
-        </a>
-        <a href="https://github.com/MarSeventh/CloudFlare-ImgBed/releases">
-            <img src="https://img.shields.io/github/release/MarSeventh/CloudFlare-ImgBed" alt="latest version" />
-        </a>
-        <a href="https://github.com/MarSeventh/CloudFlare-ImgBed/releases">
-            <img src="https://img.shields.io/github/downloads/MarSeventh/CloudFlare-ImgBed/total?color=%239F7AEA&logo=github" alt="Downloads" />
-        </a>
-        <a href="https://hub.docker.com/r/marseventh/cloudflare-imgbed">
-            <img src="https://img.shields.io/docker/pulls/marseventh/cloudflare-imgbed?style=flat-square" alt="Docker Pulls" />
-        </a>
-        <a href="https://github.com/MarSeventh/CloudFlare-ImgBed/issues">
-            <img src="https://img.shields.io/github/issues/MarSeventh/CloudFlare-ImgBed" alt="Issues" />
-        </a>
-        <a href="https://github.com/MarSeventh/CloudFlare-ImgBed/stargazers">
-            <img src="https://img.shields.io/github/stars/MarSeventh/CloudFlare-ImgBed" alt="Stars" />
-        </a>
-        <a href="https://github.com/MarSeventh/CloudFlare-ImgBed/network/members">
-            <img src="https://img.shields.io/github/forks/MarSeventh/CloudFlare-ImgBed" alt="Forks" />
-        </a>
-    </div>
 </div>
 
 
