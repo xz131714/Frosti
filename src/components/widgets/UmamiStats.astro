@@ -1,0 +1,99 @@
+---  
+import { Icon } from "astro-icon/components";  
+import { t } from "@config";  
+  
+const { url, showInline = false } = Astro.props;  
+---  
+  
+<div class="umami-stats" data-url={url}>  
+  {showInline ? (  
+    <span class="flex items-center gap-1 text-xs sm:text-sm opacity-75">  
+      <Icon name="lucide:eye" class="h-4 w-4 flex-shrink-0" />  
+      <span class="umami-loading">加载中...</span>  
+      <span class="umami-content hidden"></span>  
+    </span>  
+  ) : (  
+    <div class="flex items-center gap-1">  
+      <Icon name="lucide:eye" class="h-4 w-4" />  
+      <span class="umami-loading">加载中...</span>  
+      <span class="umami-content hidden"></span>  
+    </div>  
+  )}  
+</div>  
+  
+<script>  
+  import { getUmamiStatsClient } from '@utils/umami';  
+  
+  class UmamiStatsElement extends HTMLElement {  
+    private abortController: AbortController | null = null;  
+  
+    connectedCallback() {  
+      this.abortController = new AbortController();  
+      this.loadStats();  
+    }  
+  
+    disconnectedCallback() {  
+      if (this.abortController) {  
+        this.abortController.abort();  
+        this.abortController = null;  
+      }  
+    }  
+  
+    private async loadStats() {  
+      const url = this.getAttribute('data-url');  
+      if (!url) return;  
+  
+      const loadingEl = this.querySelector('.umami-loading');  
+      const contentEl = this.querySelector('.umami-content');  
+  
+      try {  
+        const stats = await getUmamiStatsClient(url);  
+          
+        if (stats && loadingEl && contentEl) {  
+          const pageviews = stats.pageviews?.value || 0;  
+          const visits = stats.visits?.value || 0;  
+            
+          contentEl.textContent = `${pageviews} 浏览量 · ${visits} 访问数`;  
+          loadingEl.classList.add('hidden');  
+          contentEl.classList.remove('hidden');  
+        } else {  
+          this.showError();  
+        }  
+      } catch (error) {  
+        console.error('Failed to load Umami stats:', error);  
+        this.showError();  
+      }  
+    }  
+  
+    private showError() {  
+      const loadingEl = this.querySelector('.umami-loading');  
+      const contentEl = this.querySelector('.umami-content');  
+        
+      if (loadingEl && contentEl) {  
+        contentEl.textContent = '统计加载失败';  
+        loadingEl.classList.add('hidden');  
+        contentEl.classList.remove('hidden');  
+      }  
+    }  
+  }  
+  
+  // 注册自定义元素  
+  if (!customElements.get('umami-stats')) {  
+    customElements.define('umami-stats', UmamiStatsElement);  
+  }  
+  
+  // 为现有的 .umami-stats 元素添加功能  
+  document.addEventListener('DOMContentLoaded', () => {  
+    document.querySelectorAll('.umami-stats').forEach(el => {  
+      if (!(el instanceof UmamiStatsElement)) {  
+        const url = el.getAttribute('data-url');  
+        if (url) {  
+          const umamiEl = document.createElement('umami-stats') as UmamiStatsElement;  
+          umamiEl.setAttribute('data-url', url);  
+          umamiEl.innerHTML = el.innerHTML;  
+          el.parentNode?.replaceChild(umamiEl, el);  
+        }  
+      }  
+    });  
+  });  
+</script>
