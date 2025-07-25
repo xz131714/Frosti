@@ -5,7 +5,7 @@ import type { PostData } from "@interfaces/data";
 import { Icon } from "astro-icon/components";
 import PostFilter from "./PostFilter.astro";
 
-const { title, url, pubDate, badge, categories = [], tags = [], word, time, umamiStats } = Astro.props as PostData & { umamiStats?: any };
+const { title, url, pubDate, badge, categories = [], tags = [], word, time } = Astro.props as PostData;
 const displayDate = pubDate ? dayjs(pubDate).format(DATE_FORMAT) : "";
 
 const socialLinks = [
@@ -90,16 +90,37 @@ const socialLinks = [
               </div>
             )
           }
-          {  
-            umamiStats && (  
-              <div class="flex items-center gap-1">  
-                <Icon name="lucide:eye" class="h-4 w-4" />  
-                <span>  
-                  {umamiStats.pageviews.value} {t("label.pageviews")} · {umamiStats.visits.value} {t("label.visits")} 
-                </span>  
-              </div>  
-            )  
-          }         
+          <!-- 添加异步加载的浏览量容器 -->  
+          <span class="pageview-stats-detail" data-url={url}>  
+            <!-- 浏览量数据将在这里异步加载 --> 
+          </span> 
+          <script>  
+            document.addEventListener('astro:page-load', async () => {  
+              const statsElements = document.querySelectorAll('.pageview-stats-detail');  
+              for (const element of statsElements) {  
+                const url = element.getAttribute('data-url');  
+                if (!url) continue;  
+                  
+                try {  
+                  const response = await fetch(`/api/umami-stats?url=${encodeURIComponent(url)}`);  
+                  const stats = await response.json();  
+                  if (stats && stats.pageviews && stats.visits) {  
+                    element.innerHTML = `  
+                      <div class="flex items-center gap-1">  
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">  
+                          <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>  
+                          <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>  
+                        </svg>  
+                        <span>浏览量 ${stats.pageviews.value}，访问数 ${stats.visits.value}</span>  
+                      </div>  
+                    `;  
+                  }  
+                } catch (error) {  
+                  console.error('Failed to load stats:', error);  
+                }  
+              }  
+            });  
+          </script>        
           <a href={url} class="flex items-center gap-1 hover:text-primary transition-colors">
             <Icon name="ri:links-line" class="w-4 h-4" />
           </a>

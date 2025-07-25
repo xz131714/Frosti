@@ -30,7 +30,7 @@ const displayDate = pubDate ? dayjs(pubDate).format(DATE_FORMAT) : "";
     <!-- Content Section -->
     <div class="flex-1 p-6 overflow-hidden bg-base-100 lg:order-1 order-2 flex flex-col justify-between">
       <div>
-        <PostInfo pubDate={displayDate} badge={badge} word={word} time={time} />
+        <PostInfo pubDate={displayDate} badge={badge} word={word} time={time} url={url} />
         <Heading url={url} title={title}>{title}</Heading>
         <p class="text-sm text-base-content/70 mb-4">{description}</p>
       </div>

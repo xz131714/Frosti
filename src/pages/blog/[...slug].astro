@@ -8,7 +8,7 @@ import dayjs from "@utils/dayjs";
 import { DATE_FORMAT } from "@config";
 import MainCard from "@/components/MainCard.astro";
 import Waline from "../../components/comments/Waline.astro";
-import { getUmamiStats } from "@utils/umami";
+
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -25,7 +25,6 @@ const { blog } = Astro.props;
 const { Content, remarkPluginFrontmatter, headings } = await blog.render();
 const displayDate = blog.data.pubDate ? dayjs(blog.data.pubDate).format(DATE_FORMAT) : "";
 const url = new URL(`/${blog.slug}`, Astro.url.origin);
-const umamiStats = await getUmamiStats(`/blog/${blog.slug}`);  
 ---
 
 <BaseLayout title={blog.data.title} image={blog.data.image} headings={headings} showTOC={true}>
@@ -36,6 +35,7 @@ const umamiStats = await getUmamiStats(`/blog/${blog.slug}`);
       badge={blog.data.badge}
       word={remarkPluginFrontmatter.totalCharCount}
       time={remarkPluginFrontmatter.readingTime}
+      url={url}
     />
 
     <!-- Categories and tags using PostFilter component -->
@@ -57,7 +57,6 @@ const umamiStats = await getUmamiStats(`/blog/${blog.slug}`);
           tags={blog.data.tags}
           word={remarkPluginFrontmatter.totalCharCount}
           time={remarkPluginFrontmatter.readingTime}
-          umamiStats={umamiStats}
         />
       </div>
     </div>

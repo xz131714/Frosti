@@ -15,7 +15,6 @@ export async function getStaticPaths({ paginate }: { paginate: any }) {
 }
 
 const { page }: { page: Page } = Astro.props;
-
 const totalPages = Math.ceil(page.total / page.size);
 const pageLinks = generatePageLinks(totalPages);
 ---
