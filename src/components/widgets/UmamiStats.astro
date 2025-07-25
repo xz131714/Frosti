@@ -22,7 +22,7 @@ const { url, showInline = false } = Astro.props;
 </div>  
   
 <script>  
-  import { getUmamiStatsClient } from '@utils/umami';  
+  import { getUmamiStatsClientOptimized } from '@utils/umami';  
   
   class UmamiStatsElement extends HTMLElement {  
     private abortController: AbortController | null = null;  
@@ -47,7 +47,7 @@ const { url, showInline = false } = Astro.props;
       const contentEl = this.querySelector('.umami-content');  
   
       try {  
-        const stats = await getUmamiStatsClient(url);  
+        const stats = await getUmamiStatsClientOptimized(url);  
           
         if (stats && loadingEl && contentEl) {  
           const pageviews = stats.pageviews?.value || 0;  

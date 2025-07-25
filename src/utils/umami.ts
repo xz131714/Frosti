@@ -1,4 +1,3 @@
-// src/utils/umami.ts  
 export interface UmamiStats {  
   pageviews: { value: number; prev: number };  
   visitors: { value: number; prev: number };  
@@ -13,6 +12,9 @@ export interface UmamiTokenResponse {
 const SHARE_ID = "yj7cIMUe3kQOc9Qr";  
 const WEBSITE_ID = "30a60ba6-c4d7-47d5-8a1b-f1c831e1332a";  
   
+// 全局 token 缓存  
+let globalTokenPromise: Promise<UmamiTokenResponse | null> | null = null;  
+  
 // 获取最新的 token  
 export async function getUmamiToken(): Promise<UmamiTokenResponse | null> {  
   try {  
@@ -25,6 +27,18 @@ export async function getUmamiToken(): Promise<UmamiTokenResponse | null> {
     console.error('Failed to fetch Umami token:', error);  
     return null;  
   }  
+}  
+  
+// 获取共享的 token  
+export async function getSharedUmamiToken(): Promise<UmamiTokenResponse | null> {  
+  if (!globalTokenPromise) {  
+    globalTokenPromise = getUmamiToken();  
+    // 5分钟后清除缓存，允许重新获取  
+    setTimeout(() => {  
+      globalTokenPromise = null;  
+    }, 5 * 60 * 1000);  
+  }  
+  return globalTokenPromise;  
 }  
   
 // 服务端使用的函数（保持兼容性）  
@@ -53,9 +67,8 @@ export async function getUmamiStats(url: string): Promise<UmamiStats | null> {
   }  
 }  
   
-// 客户端使用的函数  
-export async function getUmamiStatsClient(url: string): Promise<UmamiStats | null> {  
-  // 检查缓存  
+// 优化后的客户端函数（用于博客列表页）  
+export async function getUmamiStatsClientOptimized(url: string): Promise<UmamiStats | null> {  
   const cacheKey = `umami-stats:${url}`;  
   const cachedData = getCachedStats(cacheKey);  
   if (cachedData) {  
@@ -63,7 +76,7 @@ export async function getUmamiStatsClient(url: string): Promise<UmamiStats | nul
   }  
   
   try {  
-    const tokenData = await getUmamiToken();  
+    const tokenData = await getSharedUmamiToken(); // 使用共享 token  
     if (!tokenData) return null;  
   
     const endTime = Date.now();  
@@ -80,10 +93,7 @@ export async function getUmamiStatsClient(url: string): Promise<UmamiStats | nul
     }  
   
     const stats = await statsResponse.json();  
-      
-    // 缓存数据（5分钟）  
     cacheStats(cacheKey, stats);  
-      
     return stats;  
   } catch (error) {  
     console.error('Failed to fetch Umami stats:', error);  

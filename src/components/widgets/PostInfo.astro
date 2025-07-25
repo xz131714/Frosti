@@ -2,9 +2,8 @@
 import { Icon } from "astro-icon/components";  
 import { t } from "@config";  
 import type { PostData } from "@interfaces/data";  
-import UmamiStats from "./UmamiStats.astro";  
-  
-const { pubDate, badge, word, time, url, showUmami = false } = Astro.props as PostData & {   
+const { pubDate, badge, word, time, umamiStats, url, showUmami = false } = Astro.props as PostData & {   
+  umamiStats?: any;   
   url?: string;   
   showUmami?: boolean;   
 };  
@@ -29,8 +28,20 @@ const { pubDate, badge, word, time, url, showUmami = false } = Astro.props as Po
       )  
     }  
     {  
-      showUmami && url && (  
-        <UmamiStats url={url} showInline={true} />  
+      umamiStats && (  
+        <span class="flex items-center gap-1">  
+          <Icon name="lucide:eye" class="h-4 w-4 flex-shrink-0" />  
+          <span class="truncate">{t("label.pageviews")} {umamiStats.pageviews.value} · {t("label.visits")} {umamiStats.visits.value}</span>  
+        </span>  
+      )  
+    }  
+    {  
+      showUmami && url && !umamiStats && (  
+        <span class="flex items-center gap-1 umami-stats-async" data-url={url}>  
+          <Icon name="lucide:eye" class="h-4 w-4 flex-shrink-0" />  
+          <span class="umami-loading">加载中...</span>  
+          <span class="umami-content hidden"></span>  
+        </span>  
       )  
     }  
   </div>  
@@ -38,4 +49,46 @@ const { pubDate, badge, word, time, url, showUmami = false } = Astro.props as Po
     <Icon name="lucide:book-open" class="h-4 w-4 flex-shrink-0" />  
     <span class="truncate">{word} {t("label.wordCount")} · {time} {t("label.readTime")}</span>  
   </div>  
-</div>
+</div>  
+  
+{showUmami && url && !umamiStats && (  
+  <script>  
+    import { getUmamiStatsClientOptimized } from '@utils/umami';  
+  
+    document.addEventListener('DOMContentLoaded', () => {  
+      document.querySelectorAll('.umami-stats-async').forEach(async (el) => {  
+        const url = el.getAttribute('data-url');  
+        if (!url) return;  
+  
+        const loadingEl = el.querySelector('.umami-loading');  
+        const contentEl = el.querySelector('.umami-content');  
+  
+        try {  
+          const stats = await getUmamiStatsClientOptimized(url);  
+            
+          if (stats && loadingEl && contentEl) {  
+            const pageviews = stats.pageviews?.value || 0;  
+            const visits = stats.visits?.value || 0;  
+              
+            contentEl.textContent = `浏览量 ${pageviews} · 访问数 ${visits}`;  
+            loadingEl.classList.add('hidden');  
+            contentEl.classList.remove('hidden');  
+          } else {  
+            if (loadingEl && contentEl) {  
+              contentEl.textContent = '统计加载失败';  
+              loadingEl.classList.add('hidden');  
+              contentEl.classList.remove('hidden');  
+            }  
+          }  
+        } catch (error) {  
+          console.error('Failed to load Umami stats:', error);  
+          if (loadingEl && contentEl) {  
+            contentEl.textContent = '统计加载失败';  
+            loadingEl.classList.add('hidden');  
+            contentEl.classList.remove('hidden');  
+          }  
+        }  
+      });  
+    });  
+  </script>  
+)}
