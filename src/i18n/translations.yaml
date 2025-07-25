@@ -1,5 +1,7 @@
 en:
   label:
+    pageviews: "views"
+    visits: "visits"
     noTag: No tags assigned
     tagCard: Tags
     tagPage: Tag
@@ -60,6 +62,8 @@ en:
     12: December
 zh:
   label:
+    pageviews: "浏览量"
+    visits: "访问数"
     noTag: 未分配标签
     tagCard: 标签
     tagPage: 标签

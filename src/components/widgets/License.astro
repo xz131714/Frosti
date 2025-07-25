@@ -5,7 +5,7 @@ import type { PostData } from "@interfaces/data";
 import { Icon } from "astro-icon/components";
 import PostFilter from "./PostFilter.astro";
 
-const { title, url, pubDate, badge, categories = [], tags = [], word, time } = Astro.props as PostData;
+const { title, url, pubDate, badge, categories = [], tags = [], word, time, umamiStats } = Astro.props as PostData & { umamiStats?: any };
 const displayDate = pubDate ? dayjs(pubDate).format(DATE_FORMAT) : "";
 
 const socialLinks = [
@@ -80,7 +80,6 @@ const socialLinks = [
               </span>
             )
           }
-
           {
             word && time && (
               <div class="flex items-center gap-1">
@@ -91,6 +90,16 @@ const socialLinks = [
               </div>
             )
           }
+          {  
+            umamiStats && (  
+              <div class="flex items-center gap-1">  
+                <Icon name="lucide:eye" class="h-4 w-4" />  
+                <span>  
+                  {umamiStats.pageviews.value} {t("label.pageviews")} · {umamiStats.visits.value} {t("label.visits")} 
+                </span>  
+              </div>  
+            )  
+          }         
           <a href={url} class="flex items-center gap-1 hover:text-primary transition-colors">
             <Icon name="ri:links-line" class="w-4 h-4" />
           </a>
