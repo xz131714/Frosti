@@ -1,56 +1,56 @@
----  
-import { Icon } from "astro-icon/components";  
-import { t } from "@config";  
-import type { PostData } from "@interfaces/data";  
-const { pubDate, badge, word, time, url } = Astro.props as PostData & { url?: string };  
----  
-  
-<div class="flex flex-col sm:flex-row sm:justify-between gap-y-2 mb-4 text-xs sm:text-sm opacity-75">  
-  <div class="flex flex-wrap items-center gap-x-4 gap-y-2">  
-    {  
-      pubDate && (  
-        <span class="flex items-center gap-1">  
-          <Icon name="lucide:calendar" class="h-4 w-4 flex-shrink-0" />  
-          <span class="truncate">{pubDate}</span>  
-        </span>  
-      )  
-    }  
-    {  
-      badge && (  
-        <span class="flex flex-wrap items-center gap-1">  
-          <Icon name="lucide:bookmark" class="h-4 w-4 flex-shrink-0" />  
-          <span class="truncate">{badge}</span>  
-        </span>  
-      )  
-    }  
-  </div>  
-  <div class="flex flex-wrap items-center gap-1">  
-    <Icon name="lucide:book-open" class="h-4 w-4 flex-shrink-0" />  
-    <span class="truncate">{word} {t("label.wordCount")} · {time} {t("label.readTime")}</span>  
-    {url && (  
-      <span class="pageview-stats" data-url={url}>  
-        <!-- 浏览量数据将在这里异步加载 -->  
-      </span>  
-    )}  
-  </div>  
-</div>  
-  
-<script>  
-  document.addEventListener('astro:page-load', async () => {  
-    const statsElements = document.querySelectorAll('.pageview-stats');  
-    for (const element of statsElements) {  
-      const url = element.getAttribute('data-url');  
-      if (!url) continue;  
-        
-      try {  
-        const response = await fetch(`/api/umami-stats?url=${encodeURIComponent(url)}`);  
-        const stats = await response.json();  
-        if (stats && stats.pageviews) {  
-          element.innerHTML = `· <svg class="w-4 h-4 inline-block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg> 浏览量 ${stats.pageviews.value}`;  
-        }  
-      } catch (error) {  
-        console.error('Failed to load stats:', error);  
-      }  
-    }  
-  });  
+---    
+import { Icon } from "astro-icon/components";    
+import { t } from "@config";    
+import type { PostData } from "@interfaces/data";    
+const { pubDate, badge, word, time, url } = Astro.props as PostData & { url?: string };    
+---    
+    
+<div class="flex flex-col sm:flex-row sm:justify-between gap-y-2 mb-4 text-xs sm:text-sm opacity-75">    
+  <div class="flex flex-wrap items-center gap-x-4 gap-y-2">    
+    {    
+      pubDate && (    
+        <span class="flex items-center gap-1">    
+          <Icon name="lucide:calendar" class="h-4 w-4 flex-shrink-0" />    
+          <span class="truncate">{pubDate}</span>    
+        </span>    
+      )    
+    }    
+    {    
+      badge && (    
+        <span class="flex flex-wrap items-center gap-1">    
+          <Icon name="lucide:bookmark" class="h-4 w-4 flex-shrink-0" />    
+          <span class="truncate">{badge}</span>    
+        </span>    
+      )    
+    }    
+  </div>    
+  <div class="flex flex-wrap items-center gap-1">    
+    <Icon name="lucide:book-open" class="h-4 w-4 flex-shrink-0" />    
+    <span class="truncate">{word} {t("label.wordCount")} · {time} {t("label.readTime")}</span>    
+    {url && (    
+      <span class="pageview-stats" data-url={url}>    
+        <!-- 浏览量数据将在这里异步加载 -->    
+      </span>    
+    )}    
+  </div>    
+</div>    
+    
+<script>    
+  document.addEventListener('astro:page-load', async () => {    
+    const statsElements = document.querySelectorAll('.pageview-stats');    
+    for (const element of statsElements) {    
+      const url = element.getAttribute('data-url');    
+      if (!url) continue;    
+          
+      try {    
+        const response = await fetch(`/api/umami-stats?url=${encodeURIComponent(url)}`);    
+        const stats = await response.json();    
+        if (stats && stats.pageviews && stats.visits) {    
+          element.innerHTML = `· <svg class="w-4 h-4 inline-block" fill="currentColor" viewBox="0 0 20 20"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg> 浏览量 ${stats.pageviews.value}，访问数 ${stats.visits.value}`;    
+        }    
+      } catch (error) {    
+        console.error('Failed to load stats:', error);    
+      }    
+    }    
+  });    
 </script>
