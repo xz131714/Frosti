@@ -38,9 +38,14 @@ site:
           text: 动漫  
           href: /blog/category/Anime  
           svg: "material-symbols:movie-outline"  
-          target: _self  
+          target: _self 
+        - id: tv  
+          text: TV  
+          href: /blog/category/TV  
+          svg: "material-symbols:movie-outline"  
+          target: _self 
         - id: documentation
-          text: Documentation
+          text: 文章
           href: /blog/category/Documentation
           svg: "material-symbols:unknown-document-outline-rounded"
           target: _self
@@ -51,12 +56,12 @@ site:
         #   target: _self
         # 子菜单项配置
     - id: project
-      text: Project
+      text: 项目
       href: /project
       svg: "material-symbols:code-blocks-outline"
       target: _self
     - id: friend
-      text: Friend
+      text: 友链
       href: /friend
       svg: "material-symbols:supervisor-account-outline-rounded"
       target: _self

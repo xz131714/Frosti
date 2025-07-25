@@ -1,0 +1,131 @@
+---
+title: "🚀 Sqoop的导入导出"
+description: "Sqoop的导入导出命令的基本使用方法"
+pubDate: "Jun 15 2025"
+image: https://img.xiaozhangya.xin/file/api/1753188679811_wallhaven-po2d69.png
+categories:
+  - Documentation
+tags:
+  - Sqoop
+badge: Pin
+---
+
+## 🔁 一、全量导入（Import）
+
+### 1. 导入 MySQL 表到 HDFS
+
+```bash
+sqoop import \
+--connect jdbc:mysql://localhost:3306/testdb \     # MySQL JDBC连接
+--username root \                                  # 用户名
+--password root \                                  # 密码
+--table emp \                                      # 要导入的MySQL表名
+--target-dir /user/hadoop/emp \                    # 数据导入到的HDFS目录
+--delete-target-dir \                              # 删除原有目录（防止重复）
+--fields-terminated-by '\t' \                      # 指定字段分隔符为tab
+--num-mappers 1                                    # 使用一个Map任务（方便查看）
+```
+
+------
+
+### 2. 导入 MySQL 表到 Hive 表中
+
+```bash
+sqoop import \
+--connect jdbc:mysql://localhost:3306/testdb \     # 连接MySQL数据库
+--username root \                                  # 用户名
+--password root \                                  # 密码
+--table emp \                                      # 表名
+--hive-import \                                    # 导入到Hive中
+--hive-table emp_hive \                            # 指定Hive表名
+--fields-terminated-by '\t' \                      # 字段分隔符
+--num-mappers 1                                    # 一个Map任务
+```
+
+------
+
+## 🔄 二、增量导入（Incremental Import）
+
+### 1. 模式一：追加模式（append）按ID导入新数据
+
+```bash
+sqoop import \
+--connect jdbc:mysql://localhost:3306/testdb \     # MySQL连接
+--username root \                                  # 用户名
+--password root \                                  # 密码
+--table emp \                                      # 表名
+--incremental append \                             # 使用追加模式
+--check-column id \                                # 检查id字段的值
+--last-value 1000 \                                # 上次最大id，导入id > 1000的数据
+--target-dir /user/hadoop/emp_increment \          # HDFS目标路径
+--fields-terminated-by '\t' \                      # 字段分隔符
+--num-mappers 1                                    # Map任务数量
+```
+
+------
+
+### 2. 模式二：按更新时间（lastmodified）
+
+```bash
+sqoop import \
+--connect jdbc:mysql://localhost:3306/testdb \     # MySQL连接
+--username root \                                  # 用户名
+--password root \                                  # 密码
+--table emp \                                      # 表名
+--incremental lastmodified \                       # 使用lastmodified模式
+--check-column last_updated \                      # 检查更新时间字段
+--last-value "2024-01-01 00:00:00" \               # 上次导入时间
+--target-dir /user/hadoop/emp_updated \            # HDFS路径
+--fields-terminated-by '\t' \                      # 字段分隔符
+--num-mappers 1                                    # Map任务数量
+```
+
+------
+
+## 🔃 三、导出（Export）从 HDFS 到 MySQL
+
+```bash
+sqoop export \
+--connect jdbc:mysql://localhost:3306/testdb \     # 目标MySQL数据库
+--username root \                                  # 用户名
+--password root \                                  # 密码
+--table emp_backup \                               # 要导出的MySQL表
+--export-dir /user/hadoop/emp \                    # HDFS中源数据路径
+--fields-terminated-by '\t' \                      # 字段分隔符要和导入时一致
+--num-mappers 1                                    # 使用一个Map任务导出
+```
+
+------
+
+## 📌 附加说明
+
+
+| 参数                                     | 中文说明                                                     |
+| ---------------------------------------- | ------------------------------------------------------------ |
+| `--connect`                              | 指定数据库 JDBC 连接字符串（例如 MySQL）                     |
+| `--username`                             | 数据库用户名                                                 |
+| `--password`                             | 数据库密码（建议改为 --password-file 以提升安全）            |
+| `--password-file`                        | 从本地文件读取密码                                           |
+| `--table`                                | 要导入或导出的数据库表名                                     |
+| `--target-dir`                           | 指定导入数据的 HDFS 目标目录                                 |
+| `--delete-target-dir`                    | 如果目标目录已存在，则先删除它                               |
+| `--fields-terminated-by`                 | 设置字段之间的分隔符，常用 `'\t'`（制表符）                  |
+| `--num-mappers`                          | 设置并行执行 Map 任务数（默认4）                             |
+| `--split-by`                             | 用于 Map 任务并发切分的字段名，通常为主键                    |
+| `--hive-import`                          | 导入数据后自动将其加载到 Hive 表中                           |
+| `--hive-table`                           | 指定 Hive 中的目标表名                                       |
+| `--incremental`                          | 增量导入模式：`append`（追加）或 `lastmodified`（按更新时间） |
+| `--check-column`                         | 增量导入时用于判断新增数据的列名（如 `id` 或 `last_updated`） |
+| `--last-value`                           | 指定上次导入的最大ID或最近更新时间                           |
+| `--columns`                              | 指定导入/导出的字段子集，使用逗号分隔                        |
+| `--where`                                | 自定义SQL查询条件                                            |
+| `--export-dir`                           | HDFS中要导出数据的目录路径                                   |
+| `--as-textfile`                          | 指定数据以文本格式保存（默认）                               |
+| `--compress`                             | 启用压缩                                                     |
+| `--compression-codec`                    | 压缩类型（如 `org.apache.hadoop.io.compress.GzipCodec`）     |
+| `--map-column-java`                      | 指定字段与 Java 类型的映射                                   |
+| `--driver`                               | 指定数据库的 JDBC 驱动类（如非 MySQL）                       |
+
+
+------
+

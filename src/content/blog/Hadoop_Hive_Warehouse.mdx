@@ -1,0 +1,342 @@
+---
+title: "🚀 Hadoop & Hive 数据仓库"
+description: "Hadoop与Hive的基本概念、安装配置及使用方法。"
+pubDate: "Jun 14 2025"
+image: https://cdn.jsdelivr.net/gh/xz131714/PicBed@main/202506142145074.jpg
+categories:
+  - Documentation
+tags:
+  - Hadoop
+  - Hive
+  - Warehouse
+badge: Pin
+---
+
+# Hadoop & Hive 数据仓库
+
+---
+
+## 一、数据仓库定义
+
+* **数据仓库（Data Warehouse）** 是面向主题的、集成的、相对稳定的、反映历史变化的数据集合，用于支持管理决策。
+* 主要特点：
+
+  * 面向主题（主题导向）
+  * 集成多个数据源数据
+  * 数据相对稳定，历史数据保存
+  * 支持复杂查询和分析，不适合频繁更新
+
+---
+
+## 二、数据仓库与数据库的对比
+
+| 比较维度   | 数据库            | 数据仓库         |
+| ------ | -------------- | ------------ |
+| 设计目的   | 支持日常业务操作（OLTP） | 支持决策分析（OLAP） |
+| 数据结构   | 规范化，减少冗余       | 非规范化，方便查询和分析 |
+| 数据更新频率 | 高频更新           | 低频更新，主要为批量加载 |
+| 查询类型   | 简单、频繁          | 复杂、跨时间和主题    |
+| 数据历史   | 一般只保存当前数据      | 保存大量历史数据     |
+| 性能优化   | 针对事务处理优化       | 针对查询和分析优化    |
+
+---
+
+## 三、简答题模板答案
+
+### 1. Hadoop 环境搭建步骤
+
+* 安装 JDK，配置环境变量 `JAVA_HOME`。
+* 配置主机名映射（`/etc/hosts`），确保各节点能互相解析。
+* 配置 SSH 免密登录，使用 `ssh-keygen` 和 `ssh-copy-id`。
+* 安装 Hadoop，配置核心文件，启动集群。
+
+---
+
+### 2. Hive 数据仓库层次结构
+
+* **ODS（原始层）**：存储原始日志和业务数据，未清洗。
+* **DWD（明细层）**：数据清洗、结构化，规范字段。
+* **DWS（汇总层）**：按主题聚合，支持分析查询。
+* **ADS（应用层）**：面向应用和报表的最终数据层。
+
+---
+
+### 3. 日志数据采集方式
+
+* 使用 **Flume** 采集日志，组成：Source（数据输入）、Channel（缓冲）、Sink（输出存储）。
+* 结合 **Kafka** 实现高吞吐、实时处理，日志写入 Kafka，再由 Spark/Flink 等实时消费。
+* Flume 可直接将日志写入 HDFS 或 Kafka。
+
+---
+
+### 4. Hive 中常用概念
+
+* **分区表**：按字段分区存储，提高查询效率。
+* **内部表**：Hive 管理数据，删除表时数据也删除。
+* **外部表**：只管理表结构，删除表不删除数据。
+* **数据倾斜**：某些 key 数据量过大，导致资源分配不均衡，影响性能。
+
+---
+
+## 四、口诀记忆版
+
+| 内容            | 口诀                    |
+| ------------- | --------------------- |
+| JDK+主机映射+免密登录 | JDK装好主机通，免密SSH连通      |
+| Hive仓库四层结构    | 原始ODS明细DWD，汇总DWS应用ADS |
+| Flume采集三大件    | 来源输入缓冲流，输出到存储去        |
+| Kafka作用       | 高吞吐，消息队，实时流数据         |
+| Hive表两种类型     | 内表管数据，外表管结构           |
+| 数据倾斜问题        | 某键数据大，计算资源卡           |
+
+---
+
+## 五、Hive 基础操作
+
+### 1. 创建数据库
+
+```sql
+CREATE DATABASE mydb;     -- 创建一个名为 mydb 的数据库
+USE mydb;                 -- 切换当前使用的数据库为 mydb
+````
+
+### 2. 创建表
+
+#### 管理表（内部表）
+
+```sql
+CREATE TABLE emp (
+    id INT,              -- 员工编号，整型
+    name STRING,         -- 员工姓名，字符串
+    age INT,             -- 员工年龄，整型
+    dept STRING          -- 员工所在部门，字符串
+) ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t';  -- 字段分隔符为制表符
+```
+
+#### 外部表
+
+```sql
+CREATE EXTERNAL TABLE emp_ext (
+    id INT,
+    name STRING,
+    age INT,
+    dept STRING
+) ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '\t'
+LOCATION '/user/hive/warehouse/emp_ext';  -- 指定外部表数据存储路径
+-- 外部表删除只删除元数据，不会删除数据文件
+```
+
+---
+
+## 六、数据导入操作
+
+### 1. 本地文件导入表
+
+```sql
+LOAD DATA LOCAL INPATH '/home/user/emp.txt' INTO TABLE emp;  -- 将本地文件数据导入表
+```
+
+### 2. HDFS 文件导入表
+
+```sql
+LOAD DATA INPATH '/user/hadoop/emp.txt' INTO TABLE emp;      -- 将HDFS文件追加导入表
+LOAD DATA INPATH '/user/hadoop/emp.txt' OVERWRITE INTO TABLE emp;  -- 将HDFS文件覆盖导入表
+```
+
+---
+
+## 七、Hive 数据分析操作
+
+### 1. 查询所有数据
+
+```sql
+SELECT * FROM emp;   -- 查询表中所有记录
+```
+
+### 2. 分组聚合查询（GROUP BY）
+
+```sql
+SELECT dept, COUNT(*) AS emp_count    -- 按部门统计员工数量
+FROM emp
+GROUP BY dept;
+
+SELECT dept, AVG(age) AS avg_age      -- 按部门计算平均年龄
+FROM emp
+GROUP BY dept;
+```
+
+### 3. 过滤条件（WHERE）
+
+```sql
+SELECT * FROM emp
+WHERE age > 30;   -- 查询年龄大于30岁的员工
+```
+
+### 4. 排序（ORDER BY / SORT BY / DISTRIBUTE BY）
+
+```sql
+SELECT * FROM emp ORDER BY age;                      -- 全局排序，按年龄升序
+SELECT * FROM emp SORT BY age;                       -- 局部排序，适合MapReduce局部排序
+SELECT * FROM emp DISTRIBUTE BY dept SORT BY age;   -- 按部门分区后，部门内按年龄排序
+```
+
+---
+
+## 八、多表关联查询（JOIN）
+
+### 1. 内连接（INNER JOIN）
+
+```sql
+SELECT e.id, e.name, d.dept_name
+FROM emp e
+JOIN dept d
+ON e.dept = d.dept_id;    -- 返回两个表匹配部门的记录
+```
+
+### 2. 左外连接（LEFT OUTER JOIN）
+
+```sql
+SELECT e.id, e.name, d.dept_name
+FROM emp e
+LEFT OUTER JOIN dept d
+ON e.dept = d.dept_id;    -- 返回所有员工及对应部门，部门不存在显示NULL
+```
+
+### 3. 右外连接（RIGHT OUTER JOIN）
+
+```sql
+SELECT e.id, e.name, d.dept_name
+FROM emp e
+RIGHT OUTER JOIN dept d
+ON e.dept = d.dept_id;    -- 返回所有部门及对应员工，员工不存在显示NULL
+```
+
+### 4. 全外连接（FULL OUTER JOIN）
+
+```sql
+SELECT e.id, e.name, d.dept_name
+FROM emp e
+FULL OUTER JOIN dept d
+ON e.dept = d.dept_id;    -- 返回所有员工和部门的匹配及不匹配记录
+```
+
+---
+
+## 九、常用函数
+
+```sql
+CONCAT(col1, col2);                      -- 字符串连接函数
+REPLACE('hello world', 'world', 'Hive'); -- 字符串替换，将world替换为Hive
+FROM_UNIXTIME(UNIX_TIMESTAMP());         -- 获取当前时间，格式化显示
+IF(col IS NULL, '空', col);               -- 条件判断，空值替换为'空'
+```
+
+---
+
+## 十、表结构修改（ALTER TABLE）
+
+### 1. 重命名表
+
+```sql
+ALTER TABLE emp RENAME TO emp_new;   -- 将表emp重命名为emp_new
+```
+
+### 2. 添加列
+
+```sql
+ALTER TABLE emp ADD COLUMNS (
+    gender STRING COMMENT '性别',    -- 新增性别字段，字符串类型，带注释
+    salary FLOAT COMMENT '薪资'      -- 新增薪资字段，浮点型，带注释
+);
+```
+
+### 3. 替换列结构（慎用）
+
+```sql
+ALTER TABLE emp REPLACE COLUMNS (
+    id INT,
+    name STRING,
+    age INT,
+    dept STRING,
+    gender STRING
+);  -- 替换表结构，会丢失未列出的字段数据
+```
+
+### 4. 修改列名、类型、位置
+
+```sql
+ALTER TABLE emp CHANGE name emp_name STRING;        -- 修改列名name为emp_name，类型为STRING
+ALTER TABLE emp CHANGE age age INT AFTER emp_name;  -- 修改列age位置，移动到emp_name后
+ALTER TABLE emp CHANGE dept dept STRING FIRST;      -- 修改列dept位置，放置为第一列
+```
+
+### 5. 添加/删除分区（分区表）
+
+```sql
+ALTER TABLE sales ADD PARTITION (year='2025', month='06');   -- 添加指定分区
+ALTER TABLE sales DROP PARTITION (year='2024', month='12');  -- 删除指定分区
+```
+
+### 6. 修改表属性或位置
+
+```sql
+ALTER TABLE emp SET TBLPROPERTIES ('comment' = '员工信息表');  -- 设置表注释属性
+ALTER TABLE emp SET LOCATION '/new/location';                 -- 修改表存储路径
+```
+
+---
+
+## 十一、数据操作（DML）
+
+\-- Hive默认不支持细粒度UPDATE/DELETE，需要开启ACID支持事务
+
+### 1. 插入数据
+
+```sql
+INSERT INTO TABLE emp
+SELECT * FROM emp_temp;      -- 将emp_temp数据追加到emp表
+
+INSERT INTO TABLE emp (id, name)
+VALUES (1001, 'Alice');     -- 指定列插入单条数据
+```
+
+### 2. 覆盖插入
+
+```sql
+INSERT OVERWRITE TABLE emp
+SELECT * FROM emp_temp;      -- 用emp_temp数据覆盖emp表
+```
+
+### 3. 更新数据（需启用 ACID）
+
+```sql
+UPDATE emp SET salary = 8000 WHERE id = 1001;   -- 更新指定员工薪资
+
+-- ACID 配置示例
+SET hive.support.concurrency = true;
+SET hive.enforce.bucketing = true;
+SET hive.exec.dynamic.partition.mode = nonstrict;
+```
+
+### 4. 删除数据（需启用 ACID）
+
+```sql
+DELETE FROM emp WHERE age > 60;   -- 删除年龄大于60的员工数据
+```
+
+### 5. 查询数据
+
+```sql
+SELECT * FROM emp;                      -- 查询所有员工数据
+SELECT name, salary FROM emp WHERE dept = 'D001';  -- 查询指定部门员工姓名和薪资
+```
+
+### 6. 清空表
+
+```sql
+TRUNCATE TABLE emp;   -- 清空表数据但保留表结构
+```
+
+---
