@@ -1,0 +1,168 @@
+---      
+import BaseLayout from "@layouts/BaseLayout.astro";      
+import MainCard from "@components/MainCard.astro";      
+import BaseCard from "@components/BaseCard.astro";      
+import NavigationCard from "@components/mdx/NavigationCard.astro";      
+import { Icon } from "astro-icon/components";      
+---      
+      
+<BaseLayout title="导航">      
+  <BaseCard title="网站导航" image="https://picbed.xiaozhangya.xin/picbed/20250726183800973.png">      
+    <div>
+        <h1 class="text-2xl md:text-3xl font-bold">
+          <span class="bg-gradient-to-r from-green-400 to-pink-500 text-transparent bg-clip-text">
+            网站导航
+          </span>
+        </h1>
+        <h3 class="text-2xl md:text-3xl font-bold">
+        <p class="mt-2 text-base-content/60">
+          收藏的常用网站和工具链接
+        </p>
+        </h3>
+      </div>    
+  </BaseCard>      
+          
+  <MainCard infoIcon="lucide:compass">      
+    <div class="space-y-10">      
+      <!-- 开发工具 -->      
+      <section>      
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">      
+          <Icon name="lucide:code" class="w-6 h-6 text-primary" />      
+          <span>开发工具</span>      
+        </h2>      
+                
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">      
+          <NavigationCard      
+            name="Umami统计"      
+            avatar="https://us.umami.is/favicon.ico"      
+            description="网站访问统计分析平台"      
+            url="https://us.umami.is/dashboard"      
+            category="统计分析"  
+            id="DEV001"  
+          />      
+                  
+          <NavigationCard      
+            name="Vercel"      
+            avatar="https://vercel.com/favicon.ico"      
+            description="现代化的前端部署平台"      
+            url="https://vercel.com/login?next=%2Fxz131714s-projects"      
+            category="部署托管"  
+            id="DEV002"  
+          />      
+                  
+          <NavigationCard      
+            name="Iconify"      
+            avatar="https://iconify.design/favicon.ico"      
+            description="海量图标库和图标搜索工具"      
+            url="https://iconify.design/"      
+            category="图标设计"  
+            id="DEV003"  
+          />   
+          
+          <NavigationCard      
+            name="Iconfont"      
+            avatar= "/image/icons/iconfont.png"    
+            description="阿里巴巴图标库"      
+            url="https://www.iconfont.cn/"    
+            category="图标设计"  
+            id="DEV004"  
+          /> 
+    
+          <NavigationCard      
+            name="Shields徽章"      
+            avatar="https://shields.io/img/logo.png"      
+            description="为项目生成各种徽章"      
+            url="https://shields.io/"      
+            category="徽章工具"  
+            id="DEV005"  
+          />    
+        </div>      
+      </section>    
+    
+      <!-- 服务平台 -->    
+      <section>    
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">    
+          <Icon name="lucide:server" class="w-6 h-6 text-primary" />    
+          <span>服务平台</span>    
+        </h2>    
+            
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">    
+          <NavigationCard    
+            name="DigitalPlat域名"    
+            avatar="https://picbed.xiaozhangya.xin/picbed/20250726172053106.png"    
+            description="免费域名管理面板"    
+            url="https://dash.domain.digitalplat.org/panel/main"    
+            category="域名管理"  
+            id="SRV001"  
+          />
+
+          <NavigationCard    
+            name="Cloudflare"    
+            avatar="https://www.cloudflare.com/favicon.ico"    
+            description="全球领先的CDN和安全服务"    
+            url="https://dash.cloudflare.com/login"    
+            category="CDN服务"  
+            id="SRV002"
+          />
+
+          <NavigationCard    
+            name="EdgeOne"
+            avatar="/image/icons/edgeone.png"
+            description="国内CDN和边缘计算服务"
+            url="https://console.edgeone.cn/login"
+            category="域名托管"
+            id="SRV003"    
+          />
+
+          <NavigationCard    
+            name="Waline评论"    
+            avatar="https://waline.js.org/favicon.ico"    
+            description="简洁、安全的评论系统"    
+            url="https://waline.js.org/"    
+            category="评论服务"  
+            id="SRV004"  
+          />    
+            
+        </div>    
+      </section>    
+    
+      <!-- 娱乐资源 -->    
+      <section>    
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">    
+          <Icon name="lucide:image" class="w-6 h-6 text-primary" />    
+          <span>娱乐资源</span>    
+        </h2>    
+            
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">    
+          <NavigationCard    
+            name="Wallhaven"    
+            avatar="https://picbed.xiaozhangya.xin/picbed/20250726182418838.png"    
+            description="高质量壁纸分享社区"    
+            url="https://wallhaven.cc/"    
+            category="壁纸资源"  
+            id="ENT001"  
+          /> 
+          <NavigationCard    
+            name="网盘资源社"    
+            avatar="/image/icons/wpzysq.png"    
+            description="网盘资源分享平台"    
+            url="https://wallhaven.cc/"    
+            category="网盘资源"  
+            id="ENT002"  
+          /> 
+          
+          
+              
+          <NavigationCard    
+            name="宝可梦节点"    
+            avatar="https://52pokemon.huxx.top/favicon.ico"    
+            description="网络代理服务"    
+            url="https://52pokemon.huxx.top/login"    
+            category="代理服务"  
+            id="ENT003"  
+          />    
+        </div>    
+      </section>    
+    </div>      
+  </MainCard>      
+</BaseLayout>
